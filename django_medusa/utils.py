@@ -1,8 +1,9 @@
 from __future__ import print_function
 import imp
-from django.conf import settings
 from importlib import import_module
 import sys
+
+from django.conf import settings
 
 
 def get_static_renderers():
@@ -45,7 +46,7 @@ def get_static_renderers():
             if hasattr(app_render_module, "renderers"):
                 renderers += getattr(app_render_module, module_name)
             else:
-                print("Skipping app '%s'... ('%s.renderers' does not contain "\
+                print("Skipping app '%s'... ('%s.renderers' does not contain "
                       "'renderers' var (list of render classes)" % (app, app))
         except AttributeError:
             print("Skipping app '%s'... (Error importing '%s.renderers')" % (

@@ -56,7 +56,7 @@ def _gae_render_path(args):
             ""
         )
         if ((not needs_ext) and path.endswith(STANDARD_EXTENSIONS))\
-        or (mimetype == "text/html"):
+            or (mimetype == "text/html"):
             # Either has obvious extension OR it's a regular HTML file.
             return None
         return "# req since this url does not end in an extension and also\n"\
