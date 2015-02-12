@@ -1,6 +1,9 @@
 from django.core.management.base import BaseCommand
+from django.core.management import call_command
+
 from django_medusa.renderers import StaticSiteRenderer
 from django_medusa.utils import get_static_renderers
+from django_medusa.settings import MEDUSA_COLLECTSTATIC_IGNORE
 
 
 class Command(BaseCommand):
@@ -17,3 +20,6 @@ class Command(BaseCommand):
             r.generate()
 
         StaticSiteRenderer.finalize_output()
+
+        # collect static media for deployment
+        call_command('collectstatic', interactive=False, ignore_patterns=MEDUSA_COLLECTSTATIC_IGNORE)
