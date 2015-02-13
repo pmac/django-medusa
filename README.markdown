@@ -207,8 +207,8 @@ and static media will be collected to your django-medusa specific directory.
    `django_medusa` to `INSTALLED_APPS`.
 2. Select a renderer backend (currently: disk or s3) and other options in your settings.
 2. Create renderer classes in `renderers.py` under the apps you want to render.
-3. `django-admin.py staticsitegen`
-4. Deploy the static version of your site
+3. `django-admin.py staticsitegen` (optionally provide a specific settings file)
+4. Deploy the static version of your site.
 5. Profit!
 
 ### Example
