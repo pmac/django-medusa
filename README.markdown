@@ -166,17 +166,52 @@ paths that don't have an extension and are *not* HTML files (i.e.
 "/foo/json/", "/feeds/blog/", etc.), the mimetype from the "Content-Type" HTTP
 header will be manually defined for this URL in the `app.yaml` path.
 
+## Collecting static media
+Django Medusa will collect static files into the directory specified by [directory name to come] if you add:
+
+    MEDUSA_COLLECTSTATIC = True
+
+to your `settings.py`. Optionally, you may specify a list of patterns to exclude by adding:
+
+    MEDUSA_COLLECTSTATIC_IGNORE = ['admin', 'less']
+
+### Specifying the static media collection directory
+By default, static files will be collected to the directory specified by `STATIC_ROOT`. If you wish to provide a different directory, you may do so via a django-medusa specific settings file, in which you can override `STATIC_ROOT`:
+
+Given the directory structure of:
+
+    your_app/
+        build/ <- MEDUSA_DEPLOY_DIRECTORY
+
+        your_app/
+            settings.py
+            medusa_settings.py
+
+and the following values in `medusa_settings.py`:
+
+    import os
+    from .settings import *
+
+    STATIC_ROOT = os.path.join(MEDUSA_DEPLOY_DIRECTORY, 'static')
+
+you can now run:
+
+    $ python manage.py staticsitegen --settings=your_app.medusa_settings
+
+and static media will be collected to your django-medusa specific directory.
+
+
 ## Usage
 
-1. Install `django-medusa` into your python path (TODO: setup.py) and add
+1. Install `django-medusa` into your python path via pip: `$ pip install django-medusa` or download and run `python setup.py` and add
    `django_medusa` to `INSTALLED_APPS`.
-2. Select a renderer backend (currently: disk or s3) in your settings.
+2. Select a renderer backend (currently: disk or s3) and other options in your settings.
 2. Create renderer classes in `renderers.py` under the apps you want to render.
 3. `django-admin.py staticsitegen`
-4. ???
+4. Deploy the static version of your site
 5. Profit!
 
-#### Example
+### Example
 
 From the first example in the "**Renderer classes**" section, using the
 disk-based backend.
