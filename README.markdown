@@ -167,7 +167,7 @@ paths that don't have an extension and are *not* HTML files (i.e.
 header will be manually defined for this URL in the `app.yaml` path.
 
 ## Collecting static media
-Django Medusa will collect static files into the directory specified by [directory name to come] if you add:
+Django Medusa will collect static files for you after the static site code is generated if you add:
 
     MEDUSA_COLLECTSTATIC = True
 
