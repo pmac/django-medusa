@@ -173,7 +173,7 @@ Django Medusa will collect static files for you after the static site code is ge
 
 to your `settings.py`. Optionally, you may specify a list of patterns to exclude by adding:
 
-    MEDUSA_COLLECTSTATIC_IGNORE = ['admin', 'less']
+    MEDUSA_COLLECT_STATIC_IGNORE = ['admin', 'less']
 
 ### Specifying the static media collection directory
 By default, static files will be collected to the directory specified by `STATIC_ROOT`. If you wish to provide a different directory, you may do so via a django-medusa specific settings file, in which you can override `STATIC_ROOT`:
