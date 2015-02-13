@@ -169,7 +169,7 @@ header will be manually defined for this URL in the `app.yaml` path.
 ## Collecting static media
 Django Medusa will collect static files for you after the static site code is generated if you add:
 
-    MEDUSA_COLLECTSTATIC = True
+    MEDUSA_COLLECT_STATIC = True
 
 to your `settings.py`. Optionally, you may specify a list of patterns to exclude by adding:
 
