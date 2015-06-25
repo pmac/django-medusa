@@ -1,10 +1,20 @@
-VERSION = (0, 3, 1)
+from pkg_resources import get_distribution, DistributionNotFound
+import os.path
 
 
-def get_version():
-    version = '%s.%s' % (VERSION[0], VERSION[1])
-    if VERSION[2]:
-        version = '%s.%s' % (version, VERSION[2])
-    if VERSION[3:]:
-        version = '%s.%s' % (version, VERSION[3])
-    return version
+try:
+    _dist = get_distribution('django_medusa')
+
+    # Normalize case for Windows systems
+    dist_loc = os.path.normcase(_dist.location)
+    here = os.path.normcase(__file__)
+
+    if not here.startswith(os.path.join(dist_loc, 'django_medusa')):
+        # not installed, but there is another version that *is*
+        raise DistributionNotFound
+
+except DistributionNotFound:
+    __version__ = 'Please install this project with setup.py'
+
+else:
+    __version__ = _dist.version

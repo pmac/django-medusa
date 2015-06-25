@@ -7,13 +7,13 @@ except:
 
 setup(
     name='django-medusa',
-    version=__import__('django_medusa').__version__,
+    version='0.3.1',
     description='A Django static website generator.',
     include_package_data=True,
-    author='Mike Tigas',  # update this as needed
-    author_email='mike@tig.as',  # update this as needed
-    url='https://github.com/mtigas/django-medusa/',
-    download_url='https://github.com/mtigas/django-medusa',
+    author='Brandon Taylor',  # update this as needed
+    author_email='alsoicode@gmail.com',  # update this as needed
+    url='https://github.com/alsoicode/django-medusa',
+    download_url='https://github.com/alsoicode/django-medusa',
     packages=find_packages(),
     install_requires=['django'],
     license='MIT',
