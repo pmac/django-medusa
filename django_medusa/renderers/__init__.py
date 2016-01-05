@@ -1,5 +1,11 @@
 from django.conf import settings
-from django.utils import importlib
+
+try:
+    #For Django Versions < 1.9
+    from django.utils import importlib
+except ImportError:
+    #For Django versions >= 1.9
+    import importlib
 from .base import BaseStaticSiteRenderer
 from .disk import DiskStaticSiteRenderer
 from .appengine import GAEStaticSiteRenderer
