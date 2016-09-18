@@ -19,7 +19,7 @@ process by rendering many views at once.
 **For those uninterested in the nitty-gritty**, there are tutorials/examples
 in the `docs` dir:
 
-* [Tutorial 1: Hello World](https://github.com/mtigas/django-medusa/blob/master/docs/TUTORIAL-01.markdown)
+* [Tutorial 1: Hello World](https://github.com/alsoicode/django-medusa/blob/master/docs/TUTORIAL-01.markdown)
 
 ## Renderer classes
 
@@ -98,7 +98,6 @@ Example settings:
 
     INSTALLED_APPS = (
         # ...
-        # ...
         'django_medusa',
     )
     # ...
@@ -115,7 +114,6 @@ Example settings:
 Example settings:
 
     INSTALLED_APPS = (
-        # ...
         # ...
         'django_medusa',
     )
@@ -143,7 +141,6 @@ application/json in the browser -- and will be accessible from "/foo/json/".
 Example settings:
 
     INSTALLED_APPS = (
-        # ...
         # ...
         'django_medusa',
     )
