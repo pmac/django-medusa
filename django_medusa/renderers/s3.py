@@ -71,7 +71,10 @@ def _s3_render_path(args):
     # Render the view
     resp = client.get(path)
     if resp.status_code != 200:
-        raise Exception
+        raise Exception(
+            "Request to %s produced response code %d" %
+            (path, resp.status_code)
+        )
 
     # Default to "index.html" as the upload path if we're in a dir listing.
     outpath = path

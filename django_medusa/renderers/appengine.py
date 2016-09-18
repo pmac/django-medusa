@@ -40,7 +40,10 @@ def _gae_render_path(args):
 
         resp = client.get(path)
         if resp.status_code != 200:
-            raise Exception
+            raise Exception(
+                "Request to %s produced response code %d" %
+                (path, resp.status_code)
+            )
 
         mimetype = resp['Content-Type'].split(";", 1)[0]
 
