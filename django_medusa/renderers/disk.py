@@ -36,7 +36,10 @@ def _disk_render_path(args):
 
         resp = client.get(path)
         if resp.status_code != 200:
-            raise Exception
+            raise Exception(
+                "Request to %s produced response code %d" %
+                (path, resp.status_code)
+            )
         if needs_ext:
             mime = resp['Content-Type']
             mime = mime.split(';', 1)[0]
@@ -69,7 +72,7 @@ class DiskStaticSiteRenderer(BaseStaticSiteRenderer):
             print("Generating with up to %d processes..." % cpu_count())
             pool = Pool(cpu_count())
 
-            pool.map_async(
+            pool.map(
                 _disk_render_path,
                 ((None, path, None) for path in self.paths),
                 chunksize=5
