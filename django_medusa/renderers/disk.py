@@ -1,8 +1,11 @@
 from __future__ import print_function
-from django.conf import settings
-from django.test.client import Client
+
 import mimetypes
 import os
+
+from django.conf import settings
+from django.test.client import Client
+
 from .base import COMMON_MIME_MAPS, BaseStaticSiteRenderer
 
 __all__ = ('DiskStaticSiteRenderer', )
@@ -36,10 +39,8 @@ def _disk_render_path(args):
 
         resp = client.get(path)
         if resp.status_code != 200:
-            raise Exception(
-                "Request to %s produced response code %d" %
-                (path, resp.status_code)
-            )
+            print('Request to %s produced response code %d' % (path, resp.status_code))
+            return
         if needs_ext:
             mime = resp['Content-Type']
             mime = mime.split(';', 1)[0]
